@@ -1,0 +1,297 @@
+/* ==========================================================================
+   Rasco - Global Styles & Design System Animations
+   ========================================================================== */
+
+:root {
+  --primary-blue: #154C9D;
+  --primary-blue-hover: #0E3674;
+  --primary-gold: #C9A55A;
+  --primary-gold-hover: #B59146;
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow-sm: 0 2px 8px rgba(15, 35, 75, 0.04);
+  --shadow-md: 0 8px 24px rgba(15, 35, 75, 0.08);
+  --shadow-lg: 0 16px 40px rgba(15, 35, 75, 0.12);
+  --shadow-gold: 0 8px 24px rgba(201, 165, 90, 0.28);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 76px;
+}
+
+body {
+  background-color: #f8fafc;
+  color: #1e293b;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Arabic RTL Styling */
+html[dir="rtl"], body.lang-ar, [dir="rtl"] {
+  direction: rtl;
+  font-family: 'Cairo', 'Tajawal', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* English LTR Styling */
+html[dir="ltr"], body.lang-en, [dir="ltr"] {
+  direction: ltr;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+}
+
+/* Sleek Webkit Scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+  border: 2px solid #f1f5f9;
+  transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #154C9D;
+}
+
+/* ==========================================================================
+   GLOBAL KEYFRAME ANIMATIONS
+   ========================================================================== */
+
+@keyframes rascoFadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes rascoFadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes rascoFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes rascoScaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.96) translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes rascoFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes rascoFloatSlow {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.8deg);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(201, 165, 90, 0.5);
+  }
+  50% {
+    transform: scale(1.15);
+    box-shadow: 0 0 0 7px rgba(201, 165, 90, 0);
+  }
+}
+
+@keyframes liveDotPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6);
+  }
+  50% {
+    transform: scale(1.18);
+    box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+  }
+}
+
+@keyframes buttonShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* ==========================================================================
+   ANIMATION UTILITIES & PAGE SECTIONS
+   ========================================================================== */
+
+.animate-fade-in-up {
+  animation: rascoFadeInUp 0.6s var(--ease-spring) both;
+}
+
+.animate-fade-in {
+  animation: rascoFadeIn 0.5s ease both;
+}
+
+.animate-scale-in {
+  animation: rascoScaleIn 0.5s var(--ease-spring) both;
+}
+
+.animate-float {
+  animation: rascoFloat 3.5s ease-in-out infinite;
+}
+
+/* Section level smooth entrances */
+main > section,
+.contact-page-wrapper,
+.knowledge-center-page,
+.products-page-container,
+.product-detail-container,
+.terms-conditions-page,
+.privacy-policy-page {
+  animation: rascoFadeInUp 0.65s var(--ease-spring) both;
+}
+
+/* ==========================================================================
+   INTERACTIVE CARDS & HOVER MICRO-INTERACTIONS
+   ========================================================================== */
+
+/* Universal Card Lift */
+.product-card,
+.kc-article-card,
+.article-featured-card,
+.why-choose-card,
+.category-card,
+.member-card,
+.location-card,
+.pharmacy-subcard,
+.value-card,
+.partner-logo-box {
+  transition: 
+    transform 0.32s var(--ease-spring),
+    box-shadow 0.32s var(--ease-spring),
+    border-color 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.product-card:hover,
+.kc-article-card:hover,
+.member-card:hover,
+.location-card:hover,
+.why-choose-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Card Media Micro-Zoom on Hover */
+.product-card .product-img,
+.kc-article-card .kc-card-img,
+.article-featured-card .article-card-image-box img {
+  transition: transform 0.45s var(--ease-spring);
+}
+
+.product-card:hover .product-img,
+.kc-article-card:hover .kc-card-img,
+.article-featured-card:hover .article-card-image-box img {
+  transform: scale(1.05);
+}
+
+/* Buttons micro-interactions */
+button:not(:disabled),
+a.btn-primary,
+a.contact-btn,
+.product-btn-details,
+.kc-order-btn,
+.btn-whatsapp-outline {
+  transition: 
+    transform 0.22s var(--ease-spring),
+    box-shadow 0.22s var(--ease-spring),
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+button:not(:disabled):active,
+a.btn-primary:active,
+a.contact-btn:active,
+.product-btn-details:active {
+  transform: scale(0.97);
+}
+
+/* Pulsing Dots */
+.gold-dot,
+.dot-live {
+  animation: pulseGlow 2.8s infinite;
+}
+
+.dot-live {
+  animation: liveDotPulse 2.8s infinite;
+}
+
+/* Navbar Link Underline Animation */
+.nav-link {
+  position: relative;
+  transition: color 0.22s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary-gold);
+  border-radius: 9999px;
+  transition: width 0.28s var(--ease-spring), left 0.28s var(--ease-spring);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 75%;
+  left: 12.5%;
+}

@@ -1,0 +1,902 @@
+/* ==========================================================================
+   Knowledge Center / Articles Page (مركز المعرفة)
+   Matches Exact Figma Design Screenshot
+   ========================================================================== */
+
+.knowledge-center-page {
+  position: relative;
+  width: 100%;
+  background: #f8fafc;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   1. HERO BANNER WITH SEARCH & TOPIC PILLS
+   ========================================================================== */
+.kc-hero-banner {
+  position: relative;
+  width: 100%;
+  min-height: 420px;
+  background-image: url('/images/knowledge-banner-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.kc-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(15, 23, 42, 0.65) 0%,
+    rgba(15, 23, 42, 0.76) 100%
+  );
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  z-index: 1;
+}
+
+.kc-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+  width: 100%;
+  padding: 48px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+}
+
+.kc-hero-title {
+  font-family: var(--font-heading, 'Cairo', sans-serif);
+  font-size: 42px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.25;
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Search Box (Frosted Glass Pill) */
+.kc-search-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 620px;
+}
+
+.kc-search-input {
+  width: 100%;
+  height: 52px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1.2px solid rgba(255, 255, 255, 0.28);
+  padding: 0 54px 0 24px;
+  color: #ffffff;
+  font-family: var(--font-body, 'Tajawal', sans-serif);
+  font-size: 15px;
+  font-weight: 500;
+  outline: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+}
+
+.kc-search-input:focus {
+  background: rgba(255, 255, 255, 0.24);
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 8px 36px rgba(0, 0, 0, 0.25);
+}
+
+.kc-search-input::placeholder {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.kc-search-icon {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+/* Quick Topic Pills */
+.kc-quick-topics {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.kc-topic-pill {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-radius: 9999px;
+  padding: 7px 24px;
+  color: #ffffff;
+  font-family: var(--font-body, 'Tajawal', sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.22s ease;
+}
+
+.kc-topic-pill:hover,
+.kc-topic-pill.active {
+  background: rgba(255, 255, 255, 0.32);
+  border-color: rgba(255, 255, 255, 0.65);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+/* ==========================================================================
+   2. MAIN CONTENT LAYOUT (Sidebar on Right in RTL + Grid on Left)
+   ========================================================================== */
+.kc-main-container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 56px 24px 84px;
+  box-sizing: border-box;
+}
+
+.kc-layout-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 36px;
+  align-items: start;
+}
+
+/* ==========================================================================
+   3. SIDEBAR (Right in RTL)
+   ========================================================================== */
+.kc-sidebar-col {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: sticky;
+  top: 90px;
+}
+
+.kc-widget {
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+
+/* Widget A: تصنيفات المقالات */
+.kc-categories-widget {
+  background: #ffffff;
+  padding: 24px 18px;
+  border: 1px solid #eef2f6;
+  box-shadow: 0 4px 20px rgba(15, 35, 75, 0.03);
+}
+
+.kc-widget-title {
+  font-family: var(--font-heading, 'Cairo', sans-serif);
+  font-size: 19px;
+  font-weight: 800;
+  color: #154C9D;
+  margin: 0 0 16px 0;
+  text-align: right;
+  padding: 0 6px;
+}
+
+.kc-categories-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.kc-category-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: var(--font-body, 'Tajawal', sans-serif);
+  font-size: 15px;
+  font-weight: 600;
+  color: #475569;
+  transition: all 0.2s ease;
+  text-align: right;
+  box-sizing: border-box;
+}
+
+.kc-category-item:hover:not(.active) {
+  background: #f8fafc;
+  color: #154C9D;
+}
+
+.kc-category-item.active {
+  background: #154C9D;
+  color: #ffffff;
+}
+
+.kc-cat-label {
+  flex: 1;
+  text-align: right;
+}
+
+.kc-cat-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 24px;
+  padding: 0 8px;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 700;
+  background: #f1f5f9;
+  color: #64748b;
+  transition: all 0.2s ease;
+}
+
+.kc-category-item.active .kc-cat-count {
+  background: #ffffff;
+  color: #154C9D;
+}
+
+/* Widget B: اطلب الآن CTA Card */
+.kc-order-widget {
+  background: #d8e5f8;
+  padding: 26px 22px;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border: 1px solid rgba(21, 76, 157, 0.08);
+}
+
+.kc-order-title {
+  font-family: var(--font-heading, 'Cairo', sans-serif);
+  font-size: 19px;
+  font-weight: 800;
+  color: #154C9D;
+  margin: 0;
+}
+
+.kc-order-desc {
+  font-family: var(--font-body, 'Tajawal', sans-serif);
+  font-size: 14px;
+  line-height: 1.68;
+  color: #4b5e76;
+  margin: 0;
+  font-weight: 500;
+}
+
+.kc-order-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  background: none;
+  border: none;
+  padding: 0;
+  color: #154C9D;
+  font-family: var(--font-body, 'Tajawal', sans-serif);
+  font-size: 14.5px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 6px;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.kc-order-btn:hover {
+  color: #0d3674;
+}
+
+.kc-order-btn:hover .kc-order-arrow {
+  transform: translateX(-4px);
+}
+
+.kc-order-arrow {
+  transition: transform 0.2s ease;
+}
+
+/* ==========================================================================
+   4. ARTICLES GRID & CARDS
+   ========================================================================== */
+.kc-articles-col {
+  width: 100%;
+}
+
+.kc-articles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.kc-article-card {
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #eef2f6;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(15, 35, 75, 0.03);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+  box-sizing: border-box;
+}
+
+.kc-article-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 36px rgba(15, 35, 75, 0.08);
+  border-color: rgba(21, 76, 157, 0.2);
+}
+
+.kc-card-image-box {
+  position: relative;
+  width: 100%;
+  height: 185px;
+  overflow: hidden;
+  background: #1a1715;
+}
+
+.kc-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.kc-article-card:hover .kc-card-img {
+  transform: scale(1.05);
+}
+
+/* Category Badge (Top-Right in RTL) */
+.kc-card-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  padding: 4px 14px;
+  border-radius: 9999px;
+  font-family: var(--font-body, 'Tajawal', sans-serif);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.badge-health {
+  background-color: #B83280; /* Pinkish Magenta from screenshot */
+}
+
+.badge-nutrition {
+  background-color: #2563EB; /* Blue */
+}
+
+.badge-training {
+  background-color: #10B981; /* Emerald Green */
+}
+
+/* Card Body */
+.kc-card-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  text-align: right;
+  box-sizing: border-box;
+}
+
+.kc-card-title {
+  font-family: var(--font-heading, 'Cairo', sans-serif);
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e293b;
+  line-height: 1.45;
+  margin: 0 0 10px 0;
+}
+
+.kc-card-excerpt {
+  font-family: var(--font-body, 'Tajawal', sans-serif);
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: #64748b;
+  margin: 0 0 18px 0;
+  flex: 1;
+}
+
+/* Card Footer with Author */
+.kc-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  border-top: 1px solid #f8fafc;
+  padding-top: 14px;
+  margin-top: auto;
+}
+
+.kc-author-name {
+  font-family: var(--font-body, 'Tajawal', sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  color: #475569;
+}
+
+.kc-author-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid #cbd5e1;
+}
+
+.kc-avatar-circle {
+  width: 100%;
+  height: 100%;
+  background: #dbeafe;
+}
+
+/* Empty State */
+.kc-empty-state {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 60px 24px;
+  text-align: center;
+  color: #64748b;
+  font-family: var(--font-body, 'Tajawal', sans-serif);
+  border: 1px dashed #cbd5e1;
+}
+
+.kc-reset-btn {
+  margin-top: 16px;
+  padding: 10px 24px;
+  background: #154C9D;
+  color: #ffffff;
+  border: none;
+  border-radius: 9999px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.kc-reset-btn:hover {
+  background: #0d3674;
+}
+
+/* ==========================================================================
+   5. PAGINATION BAR
+   ========================================================================== */
+.kc-pagination-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 48px;
+  direction: ltr; /* Keeps buttons in standard pagination order: < 1 2 3 ... 8 > */
+}
+
+.kc-page-btn {
+  min-width: 38px;
+  height: 38px;
+  padding: 0 6px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  color: #334155;
+  font-family: var(--font-heading, 'Cairo', sans-serif);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.kc-page-btn.active {
+  background: #154C9D;
+  border-color: #154C9D;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(21, 76, 157, 0.25);
+}
+
+.kc-page-btn:hover:not(.active):not(:disabled) {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  color: #154C9D;
+}
+
+.kc-page-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.kc-page-ellipsis {
+  padding: 0 6px;
+  color: #94a3b8;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* ==========================================================================
+   6. RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+@media (max-width: 1180px) {
+  .kc-articles-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .kc-layout-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .kc-sidebar-col {
+    position: static;
+  }
+
+  .kc-hero-title {
+    font-size: 34px;
+  }
+}
+
+@media (max-width: 640px) {
+  .kc-hero-banner {
+    min-height: 360px;
+  }
+
+  .kc-hero-title {
+    font-size: 28px;
+  }
+
+  .kc-articles-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .kc-main-container {
+    padding: 36px 16px 60px;
+  }
+
+  .kc-search-input {
+    height: 48px;
+    font-size: 14px;
+  }
+
+  .kc-page-btn {
+    min-width: 34px;
+    height: 34px;
+    font-size: 13px;
+  }
+}
+
+/* ==========================================================================
+   7. LOADING STATE
+   ========================================================================== */
+.kc-loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px dashed #cbd5e1;
+  color: #154C9D;
+  font-family: var(--font-body, 'Tajawal', sans-serif);
+  font-size: 16px;
+  font-weight: 600;
+  gap: 16px;
+}
+
+.kc-spinner {
+  animation: kc-spin 1s linear infinite;
+}
+
+@keyframes kc-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.kc-article-card {
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   8. ARTICLE READING MODAL
+   ========================================================================== */
+.kc-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(15, 23, 42, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: kc-fade-in 0.25s ease;
+}
+
+@keyframes kc-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.kc-modal-card {
+  position: relative;
+  background: #ffffff;
+  width: 100%;
+  max-width: 860px;
+  max-height: 90vh;
+  border-radius: 24px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: kc-slide-up 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes kc-slide-up {
+  from {
+    transform: translateY(24px) scale(0.97);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.kc-modal-close {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.kc-modal-close:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+  transform: rotate(90deg);
+}
+
+.kc-modal-header {
+  padding: 32px 32px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.kc-modal-title {
+  font-family: var(--font-heading, 'Cairo', sans-serif);
+  font-size: 26px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+  line-height: 1.4;
+  text-align: right;
+}
+
+.kc-modal-meta {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-family: var(--font-body, 'Tajawal', sans-serif);
+  font-size: 13.5px;
+  color: #64748b;
+}
+
+.kc-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.kc-modal-image-box {
+  width: 100%;
+  height: 280px;
+  background: #0f172a;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.kc-modal-image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.kc-modal-body {
+  padding: 24px 32px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.kc-modal-html-content {
+  font-family: var(--font-body, 'Tajawal', sans-serif);
+  font-size: 15.5px;
+  line-height: 1.85;
+  color: #334155;
+  text-align: right;
+}
+
+.kc-modal-html-content h1,
+.kc-modal-html-content h2,
+.kc-modal-html-content h3 {
+  font-family: var(--font-heading, 'Cairo', sans-serif);
+  color: #0f172a;
+  margin-top: 24px;
+  margin-bottom: 12px;
+}
+
+.kc-modal-html-content h2 {
+  font-size: 20px;
+}
+
+.kc-modal-html-content p {
+  margin-bottom: 14px;
+}
+
+.kc-modal-html-content ul {
+  padding-right: 22px;
+  margin-bottom: 16px;
+}
+
+.kc-modal-html-content li {
+  margin-bottom: 8px;
+}
+
+.kc-modal-fallback-text {
+  font-family: var(--font-body, 'Tajawal', sans-serif);
+  font-size: 16px;
+  line-height: 1.8;
+  color: #475569;
+}
+
+.kc-modal-footer {
+  padding: 16px 32px 24px;
+  border-top: 1px solid #f1f5f9;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.kc-modal-done-btn {
+  padding: 10px 28px;
+  background: #154C9D;
+  color: #ffffff;
+  border: none;
+  border-radius: 9999px;
+  font-family: var(--font-body, 'Tajawal', sans-serif);
+  font-size: 14.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.kc-modal-done-btn:hover {
+  background: #0d3674;
+}
+
+@media (max-width: 640px) {
+  .kc-modal-card {
+    border-radius: 18px;
+    max-height: 94vh;
+  }
+
+  .kc-modal-header {
+    padding: 24px 20px 12px;
+  }
+
+  .kc-modal-title {
+    font-size: 20px;
+  }
+
+  .kc-modal-image-box {
+    height: 190px;
+  }
+
+  .kc-modal-body {
+    padding: 18px 20px;
+  }
+}
+
+/* ==========================================================================
+   LTR & ENGLISH SUPPORT
+   ========================================================================== */
+[dir="ltr"] .kc-search-input {
+  padding: 0 24px 0 54px;
+}
+
+[dir="ltr"] .kc-search-icon {
+  right: auto;
+  left: 20px;
+}
+
+[dir="ltr"] .kc-widget-title,
+[dir="ltr"] .kc-category-item,
+[dir="ltr"] .kc-cat-label,
+[dir="ltr"] .kc-order-widget,
+[dir="ltr"] .kc-card-body,
+[dir="ltr"] .kc-modal-title,
+[dir="ltr"] .kc-modal-html-content {
+  text-align: left;
+}
+
+[dir="ltr"] .kc-card-badge {
+  right: auto;
+  left: 14px;
+}
+
+[dir="ltr"] .kc-card-footer {
+  justify-content: flex-start;
+  flex-direction: row-reverse;
+}
+
+[dir="ltr"] .kc-order-btn:hover .kc-order-arrow {
+  transform: translateX(4px);
+}
+
+[dir="ltr"] .kc-modal-close {
+  left: auto;
+  right: 18px;
+}
+
+[dir="ltr"] .kc-modal-footer {
+  justify-content: flex-start;
+}
+
+[dir="ltr"] .kc-modal-html-content ul {
+  padding-right: 0;
+  padding-left: 22px;
+}
+

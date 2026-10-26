@@ -1,0 +1,641 @@
+/* ==========================================================================
+   AgentDetailPage.css - Rasco Authorized Agent & Products Presentation
+   Matches design screenshot with top brand banner, profile card & product grid
+   ========================================================================== */
+
+.agent-page-root {
+  min-height: 100vh;
+  background-color: #F8FAFC;
+  padding-bottom: 5rem;
+  direction: rtl;
+  font-family: inherit;
+  color: #1E293B;
+}
+
+.agent-page-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem 0;
+}
+
+/* --------------------------------------------------------------------------
+   Breadcrumb & Back Nav
+   -------------------------------------------------------------------------- */
+.agent-breadcrumb-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.agent-breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #64748B;
+}
+
+.agent-breadcrumb-link {
+  color: #64748B;
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: inherit;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  font-family: inherit;
+}
+
+.agent-breadcrumb-link:hover {
+  color: #0F4B99;
+}
+
+.agent-breadcrumb-separator {
+  color: #CBD5E1;
+}
+
+.agent-breadcrumb-current {
+  color: #0F4B99;
+  font-weight: 600;
+}
+
+.agent-back-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 1.6rem;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  border: 1.5px solid #CBD5E1;
+  border-radius: 9999px;
+  color: #0F4B99;
+  font-family: inherit;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 8px rgba(15, 75, 153, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.agent-back-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(201, 165, 90, 0.25),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.agent-back-btn:hover::before {
+  left: 100%;
+}
+
+.agent-back-btn:hover {
+  background: linear-gradient(135deg, #0F4B99 0%, #0A3366 100%);
+  border-color: #0F4B99;
+  color: #FFFFFF;
+  box-shadow: 0 8px 22px rgba(15, 75, 153, 0.28);
+  transform: translateY(-2px);
+}
+
+.agent-back-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 8px rgba(15, 75, 153, 0.2);
+}
+
+/* --------------------------------------------------------------------------
+   Top Brand Banner (Matches Screenshot Top Card - Luxury White Stage)
+   -------------------------------------------------------------------------- */
+.agent-brand-banner {
+  background-color: #FFFFFF;
+  border-radius: 24px;
+  padding: 2.75rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 8px 30px rgba(15, 75, 153, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+  position: relative;
+  overflow: hidden;
+  border: 1.5px solid #EDF2F7;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(15, 75, 153, 0.03) 0%, transparent 70%),
+    radial-gradient(circle at 50% 100%, rgba(201, 165, 90, 0.04) 0%, transparent 60%);
+}
+
+.agent-brand-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.8) 0%, transparent 80%);
+  pointer-events: none;
+}
+
+.agent-brand-banner::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 20%;
+  right: 20%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent 0%, #C9A55A 50%, transparent 100%);
+  border-radius: 3px;
+  opacity: 0.85;
+}
+
+.agent-brand-logo-frame {
+  max-width: 520px;
+  width: 90%;
+  height: 125px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.agent-brand-logo-img {
+  max-width: 100%;
+  max-height: 110px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  /* NO mix-blend-mode: multiply! On white background, logos blend 100% seamlessly without gray box artifacts */
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.04));
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.agent-brand-banner:hover .agent-brand-logo-img {
+  transform: scale(1.05);
+}
+
+/* --------------------------------------------------------------------------
+   Middle Agent Profile Card (Matches Screenshot Middle Section)
+   -------------------------------------------------------------------------- */
+.agent-profile-card {
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 24px;
+  padding: 2.25rem;
+  margin-bottom: 3.5rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: stretch;
+  position: relative;
+}
+
+/* Left Image Column with Decorative Curved Corner Border */
+.agent-image-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 0.75rem;
+}
+
+.agent-image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+}
+
+.agent-image-frame {
+  width: 100%;
+  height: 290px;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 10px 25px rgba(15, 75, 153, 0.1);
+  background-color: #F1F5F9;
+}
+
+.agent-team-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.agent-image-wrapper:hover .agent-team-img {
+  transform: scale(1.04);
+}
+
+/* Corner accent outline (navy decorative line around bottom-left corner) */
+.agent-image-corner-accent {
+  position: absolute;
+  bottom: -10px;
+  left: -10px;
+  width: 75%;
+  height: 75%;
+  border-left: 2px solid #0F4B99;
+  border-bottom: 2px solid #0F4B99;
+  border-bottom-left-radius: 28px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Right Text Column */
+.agent-info-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: right;
+  height: 100%;
+}
+
+.agent-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #EDF4FB;
+  color: #0F4B99;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.35rem 0.9rem;
+  border-radius: 8px;
+  border: 1px solid #D6E4F5;
+  letter-spacing: -0.2px;
+}
+
+.agent-badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #0F4B99;
+  display: inline-block;
+}
+
+.agent-description-text {
+  font-size: 1.05rem;
+  line-height: 2;
+  color: #475569;
+  margin: 1rem 0 1.5rem 0;
+  text-align: justify;
+}
+
+/* Actions Row Anchored at the Bottom ("تحت") */
+.agent-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: auto;
+  padding-top: 1.5rem;
+  width: 100%;
+  flex-wrap: wrap;
+  border-top: 1px solid #F1F5F9;
+}
+
+/* Modern Luxury Read More CTA with Micro-animations */
+.agent-read-more-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: linear-gradient(135deg, #0F4B99 0%, #082F63 100%);
+  color: #ffffff;
+  font-size: 0.98rem;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 0.75rem 1.6rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  cursor: pointer;
+  font-family: inherit;
+  box-shadow: 0 6px 20px rgba(15, 75, 153, 0.25);
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  letter-spacing: -0.2px;
+}
+
+/* Light shimmer sweep animation across button on hover */
+.agent-read-more-link::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -75%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.45) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(25deg);
+  transition: left 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.agent-read-more-link:hover::after {
+  left: 135%;
+}
+
+.agent-read-more-link .arrow-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: readMoreArrowPulse 2.2s infinite ease-in-out;
+}
+
+@keyframes readMoreArrowPulse {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-4px);
+  }
+}
+
+.agent-read-more-link:hover {
+  background: linear-gradient(135deg, #135bc0 0%, #0a3d82 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(15, 75, 153, 0.38);
+  color: #ffffff;
+}
+
+.agent-read-more-link:hover .arrow-icon {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateX(-6px);
+  animation: none;
+}
+
+.agent-read-more-link:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 3px 10px rgba(15, 75, 153, 0.2);
+}
+
+.agent-secondary-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #475569;
+  text-decoration: none;
+  padding: 0.72rem 1.25rem;
+  border-radius: 9999px;
+  background-color: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  transition: all 0.25s ease;
+}
+
+.agent-secondary-link:hover {
+  background-color: #EDF4FB;
+  border-color: #C7DCF5;
+  color: #0F4B99;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(15, 75, 153, 0.08);
+}
+
+/* --------------------------------------------------------------------------
+   Agent Products Section ("منتجات الوكيل")
+   -------------------------------------------------------------------------- */
+.agent-products-section {
+  margin-top: 2rem;
+}
+
+.agent-products-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.agent-products-title {
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: #0F2D6B;
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.5px;
+}
+
+.agent-products-subtitle {
+  font-size: 1rem;
+  color: #64748B;
+  margin: 0;
+}
+
+/* 4-Column Product Grid */
+.agent-products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+/* Individual Product Card */
+.agent-product-card {
+  background-color: #FFFFFF;
+  border: 1px solid #E8ECF2;
+  border-radius: 16px;
+  padding: 1.5rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.agent-product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(15, 75, 153, 0.09);
+  border-color: #C7D9EE;
+}
+
+.agent-product-image-box {
+  width: 100%;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  padding: 0.5rem;
+  border-radius: 12px;
+  background-color: #FAFCFE;
+  overflow: hidden;
+}
+
+.agent-product-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.agent-product-card:hover .agent-product-img {
+  transform: scale(1.06);
+}
+
+.agent-product-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0F2D6B;
+  margin: 0 0 0.6rem;
+  line-height: 1.4;
+  min-height: 2.8rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.agent-product-desc {
+  font-size: 0.85rem;
+  color: #64748B;
+  line-height: 1.6;
+  margin: 0 0 1.25rem;
+  min-height: 2.7rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.agent-product-btn {
+  width: 100%;
+  margin-top: auto;
+  background-color: #0F4B99;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(15, 75, 153, 0.2);
+}
+
+.agent-product-btn:hover {
+  background-color: #0B3B7B;
+  box-shadow: 0 4px 12px rgba(15, 75, 153, 0.3);
+  transform: translateY(-1px);
+}
+
+.agent-product-btn:active {
+  transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   Loading, Empty & Error States
+   -------------------------------------------------------------------------- */
+.agent-loading-container,
+.agent-empty-container {
+  grid-column: 1 / -1;
+  background-color: #FFFFFF;
+  border: 1px dashed #CBD5E1;
+  border-radius: 16px;
+  padding: 3.5rem 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: #64748B;
+}
+
+.agent-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #E2E8F0;
+  border-top-color: #0F4B99;
+  border-radius: 50%;
+  animation: agent-spin 0.8s linear infinite;
+}
+
+@keyframes agent-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Design
+   -------------------------------------------------------------------------- */
+@media (max-width: 1200px) {
+  .agent-products-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .agent-profile-card {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 1.75rem;
+  }
+
+  .agent-products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .agent-brand-banner {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .agent-brand-logo-img {
+    max-height: 110px;
+  }
+}
+
+@media (max-width: 600px) {
+  .agent-products-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .agent-page-container {
+    padding: 1rem 1rem 0;
+  }
+
+  .agent-brand-banner {
+    padding: 2rem 1rem;
+    border-radius: 14px;
+  }
+
+  .agent-profile-card {
+    border-radius: 16px;
+    padding: 1.25rem;
+  }
+
+  .agent-image-frame {
+    height: 220px;
+  }
+
+  .agent-products-title {
+    font-size: 1.5rem;
+  }
+
+  .agent-description-text {
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+}

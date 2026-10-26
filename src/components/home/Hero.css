@@ -1,0 +1,504 @@
+/* ========================================================
+   Hero Section - Figma Exact Specifications + Carousel
+   ======================================================== */
+
+.hero-figma-section {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Figma Linear Gradient: #154C9D 30%, #FFFFFF 0%, #C9A55A 30% */
+  background: 
+    linear-gradient(115deg, rgba(21, 76, 157, 0.22) 0%, rgba(255, 255, 255, 1) 40%, rgba(255, 255, 255, 1) 60%, rgba(201, 165, 90, 0.24) 100%),
+    #ffffff;
+}
+
+/* Background Golden Horse Watermark (Exact 559x800 SVG from Figma) */
+.hero-gold-watermark {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 559px;
+  height: 800px;
+  pointer-events: none;
+  z-index: 1;
+  display: flex;
+  justify-content: flex-end;
+  opacity: 0.38;
+}
+
+.gold-horse-svg {
+  width: 559px;
+  height: 800px;
+  display: block;
+}
+
+/* Figma Fixed Container: 1440px width, 800px height, Padding: 64px 75px */
+.hero-content-wrapper {
+  width: 100%;
+  max-width: 1440px;
+  min-height: auto;
+  padding: 42px 75px 54px 75px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --------------------------------------------------------
+   Typography Header (Figma Specs: Tajawal, Bold 700, 64px, 80px line height)
+   -------------------------------------------------------- */
+.hero-header-block {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.hero-main-title {
+  font-family: 'Tajawal', system-ui, -apple-system, sans-serif;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 80px;
+  letter-spacing: 0px;
+  color: #154C9D;
+  margin: 0 0 12px 0;
+  text-align: center;
+}
+
+.hero-main-title .highlight-gold {
+  color: #C9A55A;
+}
+
+.hero-subtitle {
+  font-family: 'Tajawal', system-ui, -apple-system, sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 32px;
+  color: #52616b;
+  margin: 0;
+  text-align: center;
+}
+
+/* --------------------------------------------------------
+   Interactive Carousel Gallery
+   -------------------------------------------------------- */
+/* --------------------------------------------------------
+   3D Rotating Cylinder Carousel
+   -------------------------------------------------------- */
+.hero-carousel-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1290px;
+  margin-bottom: 24px;
+  user-select: none;
+  perspective: 1400px;
+}
+
+/* Navigation Arrow Buttons */
+.carousel-arrow-btn {
+  position: absolute;
+  top: calc(50% - 14px);
+  transform: translateY(-50%);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1.5px solid #e2e8f0;
+  color: #154C9D;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 20;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.carousel-arrow-btn:hover {
+  background-color: #154C9D;
+  color: #ffffff;
+  border-color: #154C9D;
+  transform: translateY(-50%) scale(1.08);
+  box-shadow: 0 8px 26px rgba(21, 76, 157, 0.35);
+}
+
+.carousel-arrow-btn:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.arrow-prev {
+  right: -15px;
+}
+
+.arrow-next {
+  left: -15px;
+}
+
+:root {
+  --cf-width: 490px;
+  --cf-height: 315px;
+  --cf-offset-1: 280px;
+  --cf-rotate-y: 36deg;
+}
+
+/* 3D Coverflow Stage */
+.hero-coverflow-stage {
+  position: relative;
+  width: 100%;
+  height: 370px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px;
+  perspective-origin: 50% 50%;
+  transform-style: preserve-3d;
+  margin: 10px 0 16px 0;
+}
+
+/* 3D Coverflow Card Base */
+.hero-coverflow-card {
+  position: absolute;
+  width: var(--cf-width);
+  height: var(--cf-height);
+  border-radius: 26px;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: #0f172a;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  transform-style: preserve-3d;
+  will-change: transform, opacity, filter, box-shadow;
+  transition: 
+    transform 0.65s cubic-bezier(0.2, 0.8, 0.2, 1),
+    opacity 0.65s ease,
+    filter 0.65s ease,
+    box-shadow 0.65s ease,
+    border-color 0.65s ease;
+  user-select: none;
+}
+
+/* --- CENTER ACTIVE CARD --- */
+.hero-coverflow-card.pos-center {
+  transform: translateX(0) translateZ(80px) rotateY(0deg) scale(1);
+  z-index: 10;
+  opacity: 1;
+  filter: brightness(1);
+  border-color: #ffffff;
+  box-shadow: 0 25px 65px rgba(15, 75, 153, 0.35), 0 0 0 3px rgba(255, 255, 255, 0.95);
+  pointer-events: auto;
+}
+
+/* --- LTR DIRECTION: NEXT (Right side) & PREV (Left side) --- */
+.hero-coverflow-card.pos-next {
+  transform: translateX(var(--cf-offset-1)) translateZ(-75px) rotateY(calc(-1 * var(--cf-rotate-y))) scale(0.86);
+  z-index: 7;
+  opacity: 0.88;
+  filter: brightness(0.82);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.24);
+  pointer-events: auto;
+}
+
+.hero-coverflow-card.pos-prev {
+  transform: translateX(calc(-1 * var(--cf-offset-1))) translateZ(-75px) rotateY(var(--cf-rotate-y)) scale(0.86);
+  z-index: 7;
+  opacity: 0.88;
+  filter: brightness(0.82);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.24);
+  pointer-events: auto;
+}
+
+/* --- RTL DIRECTION: NEXT is Left, PREV is Right --- */
+[dir="rtl"] .hero-coverflow-card.pos-next {
+  transform: translateX(calc(-1 * var(--cf-offset-1))) translateZ(-75px) rotateY(var(--cf-rotate-y)) scale(0.86);
+}
+
+[dir="rtl"] .hero-coverflow-card.pos-prev {
+  transform: translateX(var(--cf-offset-1)) translateZ(-75px) rotateY(calc(-1 * var(--cf-rotate-y))) scale(0.86);
+}
+
+/* Side Card Hover: subtle lift and brightness */
+.hero-coverflow-card.pos-next:hover,
+.hero-coverflow-card.pos-prev:hover {
+  filter: brightness(0.96);
+  opacity: 0.98;
+  border-color: rgba(255, 255, 255, 0.95);
+}
+
+/* --- FAR BACK CARD --- */
+.hero-coverflow-card.pos-far {
+  transform: translateX(0) translateZ(-280px) scale(0.65);
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Card Media & Overlay */
+.card-media-3d {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-coverflow-card:hover .card-media-3d {
+  transform: scale(1.04);
+}
+
+.card-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 50%,
+    rgba(15, 23, 42, 0.65) 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Pill badge on 3D Coverflow card */
+.card-info-badge-3d {
+  position: absolute;
+  bottom: 18px;
+  right: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(15, 23, 42, 0.74);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  padding: 7px 18px;
+  border-radius: 9999px;
+  font-size: 13.5px;
+  font-weight: 700;
+  font-family: 'Tajawal', sans-serif;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.22);
+  z-index: 4;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+[dir="ltr"] .card-info-badge-3d {
+  right: auto;
+  left: 18px;
+}
+
+.hero-coverflow-card.pos-center .card-info-badge-3d {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #C9A55A;
+}
+
+/* Carousel Pagination Dots */
+.carousel-dots-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #cbd5e1;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none;
+}
+
+.carousel-dot:hover {
+  background: #94a3b8;
+  transform: scale(1.15);
+}
+
+.carousel-dot.active {
+  width: 28px;
+  border-radius: 9999px;
+  background: #154c9d;
+  box-shadow: 0 2px 8px rgba(21, 76, 157, 0.28);
+}
+
+/* --------------------------------------------------------
+   Actions Row (Buttons)
+   -------------------------------------------------------- */
+.hero-actions-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  direction: ltr; /* Keeps [ تواصل عبر واتساب ] on left and [ استكشف المنتجات ] on right */
+}
+
+/* Left Button: Contact WhatsApp */
+.btn-whatsapp-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: #ffffff;
+  color: #154C9D;
+  font-family: 'Tajawal', system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 10px 22px;
+  border-radius: 14px;
+  text-decoration: none;
+  border: 1.5px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  direction: rtl;
+}
+
+.btn-whatsapp-outline:hover {
+  background-color: #f8fafc;
+  border-color: #25D366;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.15);
+  transform: translateY(-2px);
+}
+
+.whatsapp-green-icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  display: block;
+}
+
+/* Right Button: Explore Products (Solid Blue #154C9D) */
+.btn-explore-products {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: #154C9D;
+  color: #ffffff;
+  font-family: 'Tajawal', system-ui, -apple-system, sans-serif;
+  font-size: 15.5px;
+  font-weight: 700;
+  padding: 11px 28px;
+  border-radius: 10px;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(21, 76, 157, 0.26);
+  transition: all 0.2s ease;
+}
+
+.btn-explore-products:hover {
+  background-color: #0e3b7d;
+  box-shadow: 0 6px 20px rgba(21, 76, 157, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-arrow-icon {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------
+   Responsive Breakpoints for 3D Coverflow
+   -------------------------------------------------------- */
+@media (max-width: 1280px) {
+  :root {
+    --cf-width: 440px;
+    --cf-height: 290px;
+    --cf-offset-1: 240px;
+  }
+
+  .hero-content-wrapper {
+    padding: 48px 32px;
+    min-height: auto;
+  }
+
+  .hero-main-title {
+    font-size: 50px;
+    line-height: 66px;
+  }
+
+  .hero-coverflow-stage {
+    height: 340px;
+  }
+}
+
+@media (max-width: 992px) {
+  :root {
+    --cf-width: 360px;
+    --cf-height: 245px;
+    --cf-offset-1: 175px;
+    --cf-rotate-y: 32deg;
+  }
+
+  .hero-main-title {
+    font-size: 38px;
+    line-height: 52px;
+  }
+
+  .hero-coverflow-stage {
+    height: 290px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --cf-width: 290px;
+    --cf-height: 205px;
+    --cf-offset-1: 115px;
+    --cf-rotate-y: 28deg;
+  }
+
+  .hero-coverflow-stage {
+    height: 250px;
+  }
+
+  .hero-coverflow-card {
+    border-radius: 20px;
+  }
+
+  .carousel-arrow-btn {
+    width: 38px;
+    height: 38px;
+  }
+
+  .hero-main-title {
+    font-size: 32px;
+    line-height: 44px;
+  }
+
+  .hero-subtitle {
+    font-size: 16px;
+  }
+
+  .hero-actions-row {
+    flex-direction: column-reverse;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .btn-explore-products,
+  .btn-whatsapp-outline {
+    width: 100%;
+  }
+}

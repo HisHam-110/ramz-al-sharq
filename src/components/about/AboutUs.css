@@ -1,0 +1,397 @@
+/* ==========================================================================
+   About Us Section (من نحن - تراثنا العريق)
+   Matches Figma Exact Design
+   ========================================================================== */
+
+.about-section {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(115deg, #e8f1fc 0%, #f6f9fc 38%, #fbf9f4 70%, #fdf6ec 100%);
+  padding: 85px 0 95px;
+  overflow: hidden;
+}
+
+.about-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 56px;
+}
+
+/* ==========================================================================
+   Right Column in RTL: Visual Composition (Horse + Gold Frame + Badge)
+   ========================================================================== */
+.about-visual-col {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-visual-wrapper {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  max-width: 100%;
+}
+
+/* Offset Gold Frame */
+.about-gold-frame {
+  position: absolute;
+  top: -16px;
+  right: -16px;
+  width: 100%;
+  height: 100%;
+  border: 1.8px solid #C6923C;
+  border-radius: 28px;
+  z-index: 1;
+  pointer-events: none;
+  transition: transform 0.3s ease;
+}
+
+.about-visual-wrapper:hover .about-gold-frame {
+  transform: translate(-3px, 3px);
+}
+
+/* Horse Image Box (Figma: 500px x 500px, Radius 24px, #000000 25% overlay) */
+.about-image-box {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(15, 35, 75, 0.12);
+  background-color: #1a1715;
+}
+
+/* Figma exact overlay: #000000 at 25% */
+.about-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 24px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.about-horse-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 34%;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.about-visual-wrapper:hover .about-horse-img {
+  transform: scale(1.02);
+}
+
+/* Glassmorphic Experience Badge (Figma: Hug 234px, Hug 156px, Radius 16px, Padding 16px, Gap 4px, #D9D9D980, Blur) */
+.about-experience-badge {
+  position: absolute;
+  bottom: -36px;
+  left: -38px;
+  z-index: 5;
+  width: 234px;
+  min-height: 156px;
+  background: #D9D9D980;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 16px;
+  padding: 16px;
+  gap: 4px;
+  box-shadow: 0 16px 36px rgba(15, 35, 75, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end; /* In RTL: aligns to the right side of the card */
+  text-align: right;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-sizing: border-box;
+}
+
+.about-experience-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 42px rgba(15, 35, 75, 0.15);
+}
+
+/* Number Row: + 25 */
+.badge-number-row {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  direction: ltr; /* Keeps '+' on the left of '25' as in Figma */
+}
+
+.badge-plus {
+  font-family: var(--font-heading, 'Cairo', sans-serif);
+  font-size: 32px;
+  font-weight: 800;
+  color: #D4A054;
+  line-height: 1;
+}
+
+.badge-number {
+  font-family: var(--font-heading, 'Cairo', sans-serif);
+  font-size: 40px;
+  font-weight: 800;
+  color: #D4A054;
+  line-height: 1;
+  letter-spacing: -0.5px;
+}
+
+/* Label Column: عاما من الخبرة في عالم / الخيول */
+.badge-label-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  text-align: right;
+  width: 100%;
+  font-family: var(--font-body, 'Tajawal', sans-serif);
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #3e4d63;
+  line-height: 1.45;
+  margin-top: 2px;
+}
+
+/* ==========================================================================
+   Left Column in RTL: Text & Cards
+   ========================================================================== */
+.about-content-col {
+  flex: 1;
+  max-width: 620px;
+  text-align: right;
+}
+
+.about-subtitle {
+  display: inline-block;
+  font-family: var(--font-heading, 'Cairo', sans-serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: #C6923C;
+  margin-bottom: 8px;
+  letter-spacing: 0.3px;
+}
+
+.about-title {
+  font-family: var(--font-heading, 'Cairo', sans-serif);
+  font-size: 44px;
+  font-weight: 800;
+  color: #154C9D;
+  line-height: 1.25;
+  margin: 0 0 18px 0;
+}
+
+.about-description {
+  font-family: var(--font-body, 'Tajawal', sans-serif);
+  font-size: 15.5px;
+  line-height: 1.85;
+  color: #475569;
+  margin: 0 0 32px 0;
+  font-weight: 500;
+  max-width: 540px;
+}
+
+/* Cards Row */
+.about-cards-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  width: 100%;
+}
+
+.about-card {
+  background: #ffffff;
+  border: 1px solid rgba(226, 232, 240, 0.7);
+  border-radius: 20px;
+  padding: 24px 20px;
+  box-shadow: 0 4px 20px rgba(15, 35, 75, 0.03);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(15, 35, 75, 0.07);
+}
+
+.about-card-vision:hover {
+  border-color: rgba(21, 76, 157, 0.3);
+}
+
+.about-card-mission:hover {
+  border-color: rgba(0, 168, 107, 0.3);
+}
+
+/* Icon Badges */
+.about-card-icon-wrap {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+  transition: transform 0.2s ease;
+}
+
+.about-card:hover .about-card-icon-wrap {
+  transform: scale(1.08);
+}
+
+.vision-icon-wrap {
+  background-color: #EBF3FC;
+}
+
+.mission-icon-wrap {
+  background-color: #E6F8F0;
+}
+
+/* Card Titles & Text */
+.about-card-title {
+  font-family: var(--font-heading, 'Cairo', sans-serif);
+  font-size: 18px;
+  font-weight: 800;
+  margin: 0 0 8px 0;
+  line-height: 1.3;
+}
+
+.vision-title {
+  color: #154C9D;
+}
+
+.mission-title {
+  color: #00A86B;
+}
+
+.about-card-text {
+  font-family: var(--font-body, 'Tajawal', sans-serif);
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: #64748B;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+@media (max-width: 1180px) {
+  .about-visual-wrapper {
+    width: 420px;
+    height: 420px;
+  }
+}
+
+@media (max-width: 992px) {
+  .about-container {
+    flex-direction: column;
+    gap: 48px;
+    padding: 0 20px;
+  }
+
+  .about-content-col {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .about-description {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .about-visual-wrapper {
+    width: min(420px, 90vw);
+    height: min(420px, 90vw);
+  }
+
+  .about-title {
+    font-size: 38px;
+  }
+}
+
+@media (max-width: 580px) {
+  .about-section {
+    padding: 60px 0 75px;
+  }
+
+  .about-cards-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .about-visual-wrapper {
+    width: min(300px, 86vw);
+    height: min(300px, 86vw);
+  }
+
+  .about-gold-frame {
+    top: -12px;
+    right: -12px;
+    border-radius: 26px;
+  }
+
+  .about-image-box {
+    border-radius: 22px;
+  }
+
+  .about-experience-badge {
+    bottom: -22px;
+    left: -18px;
+    padding: 12px 14px;
+    width: 200px;
+    min-height: 125px;
+  }
+
+  .badge-plus {
+    font-size: 26px;
+  }
+
+  .badge-number {
+    font-size: 32px;
+  }
+
+  .badge-label-col {
+    font-size: 13px;
+  }
+
+  .about-title {
+    font-size: 32px;
+  }
+}
+
+/* ==========================================================================
+   LTR Direction Rules
+   ========================================================================== */
+[dir="ltr"] .about-gold-frame {
+  right: auto;
+  left: -16px;
+}
+
+[dir="ltr"] .about-experience-badge {
+  left: auto;
+  right: -38px;
+}
+
+@media (max-width: 580px) {
+  [dir="ltr"] .about-gold-frame {
+    right: auto;
+    left: -12px;
+  }
+
+  [dir="ltr"] .about-experience-badge {
+    left: auto;
+    right: -18px;
+  }
+}

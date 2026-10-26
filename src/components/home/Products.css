@@ -1,0 +1,278 @@
+/* ========================================================
+   Products Section (منتجاتنا) - Figma Exact Design
+   ======================================================== */
+
+.products-section {
+  width: 100%;
+  background: 
+    linear-gradient(180deg, #ffffff 0%, #f4f7fb 100%);
+  padding: 72px 75px;
+  box-sizing: border-box;
+}
+
+.products-container {
+  max-width: 1290px;
+  margin: 0 auto;
+}
+
+/* --------------------------------------------------------
+   Header Block (Title on Right, Carousel Arrows on Left)
+   -------------------------------------------------------- */
+.products-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 44px;
+}
+
+.products-title-group {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+
+.products-tag {
+  font-family: 'Tajawal', system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #C9A55A;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.products-title {
+  font-family: 'Tajawal', system-ui, -apple-system, sans-serif;
+  font-size: 40px;
+  font-weight: 800;
+  color: #154C9D;
+  margin: 0;
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+}
+
+/* Navigation Arrow Controls */
+.products-nav-arrows {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  direction: ltr; /* Keeps [ Solid Left ] [ Outline Right ] order matching Figma */
+}
+
+.prod-arrow-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+/* Solid Golden Button (Left) */
+.prod-arrow-solid {
+  background-color: #C9A55A;
+  color: #ffffff;
+  border: 1.5px solid #C9A55A;
+  box-shadow: 0 4px 12px rgba(201, 165, 90, 0.28);
+}
+
+.prod-arrow-solid:hover {
+  background-color: #b59247;
+  border-color: #b59247;
+  transform: scale(1.08);
+  box-shadow: 0 6px 18px rgba(201, 165, 90, 0.42);
+}
+
+/* Outline Golden Button (Right) */
+.prod-arrow-outline {
+  background-color: #ffffff;
+  color: #C9A55A;
+  border: 1.5px solid #C9A55A;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.prod-arrow-outline:hover {
+  background-color: #C9A55A;
+  color: #ffffff;
+  transform: scale(1.08);
+  box-shadow: 0 6px 18px rgba(201, 165, 90, 0.32);
+}
+
+.prod-arrow-btn:active {
+  transform: scale(0.94);
+}
+
+/* --------------------------------------------------------
+   Products Horizontal Carousel Track
+   -------------------------------------------------------- */
+.products-grid {
+  display: flex;
+  gap: 22px;
+  width: 100%;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-snap-type: x mandatory;
+  padding: 8px 4px 18px 4px;
+  box-sizing: border-box;
+}
+
+.products-grid::-webkit-scrollbar {
+  display: none;
+}
+
+/* Individual Product Card (4 per view on standard desktop) */
+.product-card {
+  flex: 0 0 calc(25% - 16.5px);
+  min-width: 270px;
+  max-width: 320px;
+  box-sizing: border-box;
+  scroll-snap-align: start;
+  background-color: #ffffff;
+  border: 1.5px solid #edf2f7;
+  border-radius: 22px;
+  padding: 24px 20px 22px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  position: relative;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  border-color: #dbeafe;
+  box-shadow: 0 16px 36px rgba(21, 76, 157, 0.09);
+}
+
+/* Packshot Image Container */
+.product-image-container {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.product-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.05);
+}
+
+/* Product Name */
+.product-name {
+  font-family: 'Tajawal', system-ui, -apple-system, sans-serif;
+  font-size: 17.5px;
+  font-weight: 700;
+  color: #154C9D;
+  margin: 0 0 10px 0;
+  line-height: 1.3;
+}
+
+/* Arabic Description */
+.product-desc {
+  font-family: 'Tajawal', system-ui, -apple-system, sans-serif;
+  font-size: 12.8px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: #64748b;
+  margin: 0 0 22px 0;
+  max-width: 230px;
+  flex-grow: 1;
+}
+
+/* View Details Button */
+.product-btn-details {
+  width: 100%;
+  background-color: #154C9D;
+  color: #ffffff;
+  font-family: 'Tajawal', system-ui, -apple-system, sans-serif;
+  font-size: 14.5px;
+  font-weight: 700;
+  padding: 11px 0;
+  border-radius: 9px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 3px 10px rgba(21, 76, 157, 0.18);
+}
+
+.product-btn-details:hover {
+  background-color: #0e3b7d;
+  box-shadow: 0 6px 18px rgba(21, 76, 157, 0.28);
+  transform: translateY(-1px);
+}
+
+.product-btn-details:active {
+  transform: translateY(0);
+}
+
+/* --------------------------------------------------------
+   Responsive Breakpoints
+   -------------------------------------------------------- */
+@media (max-width: 1200px) {
+  .products-section {
+    padding: 60px 32px;
+  }
+
+  .products-grid {
+    gap: 16px;
+  }
+
+  .product-card {
+    flex: 0 0 calc(33.333% - 11px);
+    min-width: 250px;
+  }
+
+  .product-image-container {
+    height: 180px;
+  }
+
+  .product-name {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 992px) {
+  .product-card {
+    flex: 0 0 calc(50% - 10px);
+    min-width: 240px;
+  }
+}
+
+@media (max-width: 640px) {
+  .products-section {
+    padding: 48px 16px;
+  }
+
+  .products-title {
+    font-size: 30px;
+  }
+
+  .products-tag {
+    font-size: 14px;
+  }
+
+  .product-card {
+    flex: 0 0 85%;
+    min-width: 260px;
+  }
+
+  .product-image-container {
+    height: 210px;
+  }
+}

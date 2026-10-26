@@ -1,0 +1,329 @@
+/* ==========================================================================
+   Rasco Official Footer (تذييل الموقع)
+   Figma Exact Specs:
+   - Outer Frame 1984077931:
+       Bg: #091E3F, Border-Top: 4px solid #C9A55A, Padding: 56px 75px, Gap: 10px
+   - Inner Frame 1984077530:
+       Width: Fill (max 1290px), Radius: 24px, Padding: 24px, Gap: 32px,
+       Bg: Linear Gradient (#081B38 -> #0F346B -> #081B38)
+   ========================================================================== */
+
+/* Outer Container - Frame 1984077931 */
+.rasco-footer {
+  position: relative;
+  width: 100%;
+  background-color: #051736;
+  border-top: 3.5px solid #C9A55A;
+  padding: 56px 75px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Inner Rounded Card - Frame 1984077530 */
+.footer-inner-card {
+  position: relative;
+  width: 100%;
+  max-width: 1290px;
+  border-radius: 24px;
+  padding: 32px 42px 26px 42px;
+  box-sizing: border-box;
+  background: linear-gradient(180deg, #05193B 0%, #092857 50%, #051938 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  overflow: hidden;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(201, 165, 90, 0.12);
+}
+
+/* Background Golden Horse Silhouette Art */
+[dir="rtl"] .footer-horse-watermark {
+  position: absolute;
+  top: 12px;
+  left: -24px;
+  width: 310px;
+  height: 440px;
+  opacity: 0.48;
+  pointer-events: none;
+  z-index: 1;
+  transform: scaleX(-1);
+}
+
+[dir="ltr"] .footer-horse-watermark {
+  position: absolute;
+  top: 12px;
+  right: -24px;
+  left: auto;
+  width: 310px;
+  height: 440px;
+  opacity: 0.48;
+  pointer-events: none;
+  z-index: 1;
+  transform: scaleX(1);
+}
+
+.footer-horse-watermark svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ==========================================================================
+   Top Grid Columns
+   ========================================================================== */
+
+.footer-grid-row {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1.3fr 0.8fr;
+  gap: 32px;
+}
+
+.footer-col {
+  width: 100%;
+}
+
+[dir="rtl"] .footer-col {
+  text-align: right;
+}
+
+[dir="ltr"] .footer-col {
+  text-align: left;
+}
+
+/* Brand Column */
+.footer-logo-wrapper {
+  margin-bottom: 18px;
+}
+
+.footer-brand-logo {
+  width: 140px;
+  height: auto;
+  display: block;
+}
+
+.footer-about-text {
+  color: rgba(255, 255, 255, 0.8);
+  font-family: 'Tajawal', sans-serif;
+  font-size: 14.5px;
+  line-height: 1.85;
+  margin: 0;
+  max-width: 290px;
+}
+
+/* Titles */
+.footer-col-title {
+  color: #ffffff;
+  font-family: 'Tajawal', sans-serif;
+  font-size: 19px;
+  font-weight: 800;
+  margin: 0 0 20px 0;
+  letter-spacing: -0.2px;
+}
+
+/* Quick Links */
+.footer-links-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-links-list a {
+  color: rgba(255, 255, 255, 0.78);
+  text-decoration: none;
+  font-family: 'Tajawal', sans-serif;
+  font-size: 14.5px;
+  font-weight: 500;
+  display: inline-block;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.footer-links-list a:hover {
+  color: #C9A55A;
+  transform: translateX(-4px);
+}
+
+/* Contact Info */
+.footer-contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.contact-link {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  font-family: 'Tajawal', sans-serif;
+  font-size: 14.5px;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.contact-link:hover {
+  color: #C9A55A;
+}
+
+.contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Golden Divider */
+.footer-gold-divider {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 1.5px;
+  background: #C9A55A;
+  opacity: 0.85;
+}
+
+/* ==========================================================================
+   Bottom Row: Copyright, Social Buttons, Legal Links
+   ========================================================================== */
+
+.footer-bottom-row {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.footer-copyright {
+  color: #8fa0b5;
+  font-family: 'Tajawal', sans-serif;
+  font-size: 13.5px;
+  font-weight: 500;
+}
+
+/* Social Buttons */
+.footer-social-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-social-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: #0d2752;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.footer-social-btn:hover {
+  background: #C9A55A;
+  border-color: #C9A55A;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(201, 165, 90, 0.35);
+}
+
+/* Legal Links */
+.footer-legal-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.footer-legal-link {
+  color: #8fa0b5;
+  text-decoration: none;
+  font-family: 'Tajawal', sans-serif;
+  font-size: 13.5px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.footer-legal-link:hover {
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+
+@media (max-width: 1200px) {
+  .rasco-footer {
+    padding: 40px 30px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .footer-grid-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .footer-col-art-spacer {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .rasco-footer {
+    padding: 30px 16px;
+  }
+
+  .footer-inner-card {
+    padding: 24px 18px;
+    border-radius: 18px;
+    gap: 24px;
+  }
+
+  .footer-grid-row {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  .footer-horse-watermark {
+    display: none;
+  }
+
+  .footer-bottom-row {
+    flex-direction: column-reverse;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .footer-social-icons {
+    order: 1;
+  }
+
+  .footer-legal-links {
+    order: 2;
+  }
+
+  .footer-copyright {
+    order: 3;
+  }
+}

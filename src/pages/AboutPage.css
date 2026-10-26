@@ -1,0 +1,89 @@
+/* ==========================================================================
+   About Page Wrapper & Breadcrumbs (صفحة من نحن)
+   ========================================================================== */
+
+.about-page-wrapper {
+  position: relative;
+  width: 100%;
+  background: #f8fafc;
+  min-height: 85vh;
+  padding-bottom: 70px;
+  box-sizing: border-box;
+}
+
+/* Standalone Section Adjustments inside dedicated Page */
+.about-section-standalone {
+  padding: 60px 0 70px;
+}
+
+/* Back to Home Button at bottom */
+.about-back-home-box {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 24px;
+}
+
+.about-back-home-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 42px;
+  background-color: #ffffff;
+  color: #154C9D;
+  border: 1.5px solid #154C9D;
+  border-radius: 9999px;
+  font-family: var(--font-body, 'Tajawal', sans-serif);
+  font-size: 15.5px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(21, 76, 157, 0.08);
+  overflow: hidden;
+  isolation: isolate;
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  text-decoration: none;
+}
+
+.about-back-home-btn span {
+  position: relative;
+  z-index: 2;
+  transition: color 0.35s ease;
+}
+
+.about-back-home-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  transform: skewX(-25deg);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.about-back-home-btn:hover {
+  background: linear-gradient(135deg, #154C9D 0%, #0d3570 100%);
+  color: #ffffff;
+  border-color: #0d3570;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(21, 76, 157, 0.28), 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.about-back-home-btn:hover::before {
+  left: 140%;
+  transition: left 0.75s ease-in-out;
+}
+
+.about-back-home-btn:active {
+  transform: translateY(-1px) scale(0.99);
+  box-shadow: 0 4px 12px rgba(21, 76, 157, 0.2);
+}
+
+@media (max-width: 768px) {
+  .about-breadcrumb-container {
+    padding: 12px 20px;
+  }
+}

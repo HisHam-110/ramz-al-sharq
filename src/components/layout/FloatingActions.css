@@ -1,0 +1,336 @@
+/* ==========================================================================
+   Floating Actions Styling (WhatsApp Right & Scroll-To-Top Left)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Floating WhatsApp (Bottom Right)
+   -------------------------------------------------------------------------- */
+.floating-whatsapp-container {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Outer Pulsing Wave */
+.floating-whatsapp-pulse {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(37, 211, 102, 0.45);
+  z-index: 1;
+  pointer-events: none;
+  animation: whatsappWave 2.4s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+}
+
+@keyframes whatsappWave {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+  60% {
+    transform: scale(1.55);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+/* WhatsApp Floating Button */
+.floating-whatsapp-btn {
+  position: relative;
+  z-index: 2;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2fe675 0%, #25d366 40%, #128c7e 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.42), 0 3px 8px rgba(0, 0, 0, 0.12);
+  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.28s ease;
+  cursor: pointer;
+  outline: none;
+}
+
+.floating-whatsapp-btn:hover {
+  transform: translateY(-4px) scale(1.06);
+  box-shadow: 0 14px 32px rgba(37, 211, 102, 0.55), 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.floating-whatsapp-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.floating-whatsapp-svg {
+  display: block;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+  transition: transform 0.3s ease;
+}
+
+.floating-whatsapp-btn:hover .floating-whatsapp-svg {
+  transform: scale(1.08) rotate(4deg);
+}
+
+/* WhatsApp Tooltip (Desktop) */
+.floating-whatsapp-tooltip {
+  position: absolute;
+  right: calc(100% + 14px);
+  background: rgba(15, 23, 42, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #ffffff;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 13.5px;
+  font-weight: 600;
+  font-family: inherit;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(8px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 10;
+}
+
+/* Small Tooltip Arrow Pointing to WhatsApp Button */
+.floating-whatsapp-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent transparent transparent rgba(15, 23, 42, 0.92);
+}
+
+.floating-tooltip-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #25d366;
+  box-shadow: 0 0 8px #25d366;
+  animation: pulseDot 1.8s infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+}
+
+.floating-whatsapp-container:hover .floating-whatsapp-tooltip {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+/* --------------------------------------------------------------------------
+   2. Floating Scroll To Top (Bottom Left)
+   -------------------------------------------------------------------------- */
+.floating-scroll-container {
+  position: fixed;
+  bottom: 28px;
+  left: 28px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px) scale(0.85);
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.35s ease;
+  pointer-events: none;
+}
+
+.floating-scroll-container.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* Scroll Button Container */
+.floating-scroll-btn {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 10px 25px rgba(14, 61, 125, 0.28), 0 3px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+}
+
+.floating-scroll-btn:hover {
+  transform: translateY(-4px) scale(1.06);
+  box-shadow: 0 14px 32px rgba(14, 61, 125, 0.42), 0 0 16px rgba(197, 168, 128, 0.35);
+}
+
+.floating-scroll-btn:active {
+  transform: translateY(0) scale(0.96);
+}
+
+/* Circular SVG Progress Ring */
+.floating-progress-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.floating-progress-bg {
+  fill: none;
+  stroke: rgba(14, 61, 125, 0.15);
+  stroke-width: 2.8;
+}
+
+.floating-progress-bar {
+  fill: none;
+  stroke: #c5a880; /* Elegant Rasco Brand Gold Accent */
+  stroke-width: 3.2;
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  transition: stroke-dashoffset 0.12s linear;
+  filter: drop-shadow(0 0 4px rgba(197, 168, 128, 0.5));
+}
+
+/* Center Core with Royal Navy Gradient */
+.floating-scroll-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0e3d7d 0%, #154c9d 60%, #1d69d8 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.35);
+  transition: background 0.3s ease;
+}
+
+.floating-scroll-arrow {
+  display: block;
+  color: #ffffff;
+  transition: transform 0.25s ease;
+}
+
+.floating-scroll-btn:hover .floating-scroll-arrow {
+  transform: translateY(-2.5px);
+}
+
+/* Scroll Tooltip */
+.floating-scroll-tooltip {
+  position: absolute;
+  left: calc(100% + 14px);
+  background: rgba(15, 23, 42, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #ffffff;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 13.5px;
+  font-weight: 600;
+  font-family: inherit;
+  white-space: nowrap;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-8px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 10;
+}
+
+/* Small Tooltip Arrow Pointing to Scroll Button */
+.floating-scroll-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  transform: translateY(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent rgba(15, 23, 42, 0.92) transparent transparent;
+}
+
+.floating-scroll-container:hover .floating-scroll-tooltip {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+/* --------------------------------------------------------------------------
+   3. Responsive Adjustments (Mobile & Tablets)
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .floating-whatsapp-container {
+    bottom: 20px;
+    right: 18px;
+  }
+
+  .floating-whatsapp-pulse {
+    width: 52px;
+    height: 52px;
+  }
+
+  .floating-whatsapp-btn {
+    width: 52px;
+    height: 52px;
+  }
+
+  .floating-scroll-container {
+    bottom: 20px;
+    left: 18px;
+  }
+
+  .floating-scroll-btn {
+    width: 50px;
+    height: 50px;
+  }
+
+  .floating-scroll-icon-wrap {
+    width: 38px;
+    height: 38px;
+  }
+
+  .floating-progress-ring {
+    width: 50px;
+    height: 50px;
+    viewBox: 0 0 56 56;
+  }
+
+  /* Hide tooltips on touch devices */
+  .floating-whatsapp-tooltip,
+  .floating-scroll-tooltip {
+    display: none !important;
+  }
+}

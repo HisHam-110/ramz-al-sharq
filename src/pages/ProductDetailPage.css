@@ -1,0 +1,680 @@
+/* =========================================================================
+   PRODUCT DETAIL PAGE STYLES (Pixel-perfect matching Figma design)
+   ========================================================================= */
+
+.product-detail-page {
+  background-color: #f8fafc;
+  min-height: 100vh;
+  padding: 32px 0 80px 0;
+  color: #1d2939;
+  font-family: inherit;
+}
+
+.pdp-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+  box-sizing: border-box;
+}
+
+/* =========================================================================
+   1. BREADCRUMBS
+   ========================================================================= */
+
+.pdp-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 28px;
+  font-size: 13.5px;
+}
+
+.pdp-bc-link {
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: #667085;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.pdp-bc-link:hover {
+  color: #0e3d7d;
+  text-decoration: underline;
+}
+
+.pdp-bc-separator {
+  color: #98a2b3;
+}
+
+.pdp-bc-current {
+  color: #0e3d7d;
+  font-weight: 700;
+}
+
+/* =========================================================================
+   2. HERO SHOWCASE (Gallery on Right, Info on Left in RTL)
+   ========================================================================= */
+
+.pdp-hero-grid {
+  display: grid;
+  grid-template-columns: 460px 1fr;
+  gap: 36px;
+  align-items: flex-start;
+  margin-bottom: 48px;
+}
+
+/* Gallery (Right in RTL) */
+.pdp-gallery-col {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.pdp-main-image-frame {
+  flex: 1;
+  background-color: #ffffff;
+  border: 1px solid #eaecf0;
+  border-radius: 20px;
+  height: 460px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(16, 24, 40, 0.04);
+}
+
+.pdp-main-image {
+  max-height: 400px;
+  max-width: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.pdp-main-image:hover {
+  transform: scale(1.03);
+}
+
+.pdp-thumbnails-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pdp-thumb-btn {
+  width: 76px;
+  height: 76px;
+  background-color: #ffffff;
+  border: 1.5px solid #eaecf0;
+  border-radius: 12px;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pdp-thumb-btn:hover {
+  border-color: #0e3d7d;
+}
+
+.pdp-thumb-btn.active {
+  border-color: #0e3d7d;
+  box-shadow: 0 0 0 3px rgba(14, 61, 125, 0.15);
+}
+
+.pdp-thumb-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Info Column (Left in RTL) */
+.pdp-info-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.pdp-tags-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.pdp-category-badge {
+  background-color: #0e3d7d;
+  color: #ffffff;
+  padding: 4px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.pdp-agent-badge {
+  background-color: #ffffff;
+  border: 1px solid #d0d5dd;
+  color: #344054;
+  padding: 4px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.pdp-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: #0e3d7d;
+  margin: 0 0 10px 0;
+  line-height: 1.3;
+}
+
+.pdp-subtitle {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #475467;
+  margin: 0 0 24px 0;
+}
+
+/* Purchase & Dosage Box */
+.pdp-spec-box {
+  background-color: #ffffff;
+  border: 1px solid #eaecf0;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(16, 24, 40, 0.04);
+}
+
+.pdp-spec-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #f2f4f7;
+}
+
+.pdp-spec-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #475467;
+}
+
+.pdp-spec-value {
+  font-size: 15.5px;
+  font-weight: 700;
+  color: #0e3d7d;
+}
+
+.pdp-weights-options {
+  display: flex;
+  gap: 10px;
+}
+
+.pdp-weight-btn {
+  padding: 6px 18px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: #ffffff;
+  border: 1px solid #d0d5dd;
+  color: #475467;
+}
+
+.pdp-weight-btn.active {
+  background-color: #eff4fb;
+  border-color: #0e3d7d;
+  color: #0e3d7d;
+}
+
+.pdp-whatsapp-btn {
+  width: 100%;
+  height: 48px;
+  background-color: #22c55e;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+  box-shadow: 0 2px 6px rgba(34, 197, 94, 0.25);
+}
+
+.pdp-whatsapp-btn:hover {
+  background-color: #16a34a;
+}
+
+.pdp-whatsapp-btn:active {
+  transform: scale(0.99);
+}
+
+/* Trust Cards */
+.pdp-trust-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.pdp-trust-card {
+  background-color: #ffffff;
+  border: 1px solid #eaecf0;
+  border-radius: 14px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pdp-trust-icon {
+  color: #0e3d7d;
+  flex-shrink: 0;
+}
+
+.pdp-trust-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #101828;
+  margin: 0 0 2px 0;
+}
+
+.pdp-trust-sub {
+  font-size: 12px;
+  color: #667085;
+  margin: 0;
+}
+
+/* =========================================================================
+   3. TABBED PRODUCT DETAILS (Sidebar Tabs on Right, Content on Left)
+   ========================================================================= */
+
+.pdp-tabs-section {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 28px;
+  align-items: flex-start;
+  margin-bottom: 60px;
+}
+
+/* Sidebar Menu */
+.pdp-tabs-sidebar {
+  display: flex;
+  flex-direction: column;
+}
+
+.pdp-tabs-heading {
+  font-size: 17px;
+  font-weight: 800;
+  color: #0e3d7d;
+  margin: 0 0 14px 0;
+}
+
+.pdp-tabs-menu {
+  background-color: #ffffff;
+  border: 1px solid #eaecf0;
+  border-radius: 16px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  box-shadow: 0 1px 3px rgba(16, 24, 40, 0.03);
+}
+
+.pdp-tab-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border: none;
+  background: transparent;
+  border-radius: 10px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #344054;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pdp-tab-item-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pdp-tab-item:hover {
+  background-color: #f8fafc;
+}
+
+.pdp-tab-item.active {
+  background-color: #0e3d7d;
+  color: #ffffff;
+}
+
+/* Tab Panel */
+.pdp-tab-panel {
+  background-color: #ffffff;
+  border: 1px solid #eaecf0;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 1px 3px rgba(16, 24, 40, 0.03);
+}
+
+.pdp-tab-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f2f4f7;
+}
+
+.pdp-tab-icon-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #eff4fb;
+  color: #0e3d7d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pdp-tab-title {
+  font-size: 19px;
+  font-weight: 800;
+  color: #0e3d7d;
+  margin: 0;
+}
+
+.pdp-tab-text {
+  font-size: 14.5px;
+  line-height: 1.8;
+  color: #344054;
+  margin: 0 0 16px 0;
+}
+
+/* Features Grid */
+.pdp-features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.pdp-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #344054;
+}
+
+.pdp-check-icon {
+  color: #10b981;
+  flex-shrink: 0;
+}
+
+/* Dosage Tips */
+.pdp-dosage-tips {
+  background-color: #f8fafc;
+  border: 1px solid #eaecf0;
+  border-radius: 12px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.pdp-tip-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13.5px;
+  color: #344054;
+}
+
+.pdp-tip-row strong {
+  color: #0e3d7d;
+}
+
+/* Ingredients */
+.pdp-ingredients-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.pdp-ingredient-card {
+  background-color: #f8fafc;
+  border: 1px solid #eaecf0;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.pdp-ing-name {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #0e3d7d;
+  margin: 0 0 6px 0;
+}
+
+.pdp-ing-desc {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #475467;
+  margin: 0;
+}
+
+/* Warnings */
+.pdp-warnings-box {
+  background-color: #fef3f2;
+  border: 1px solid #fee4e2;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pdp-warning-text {
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: #b42318;
+  margin: 0;
+}
+
+/* HTML content from API */
+.pdp-html-content {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #344054;
+}
+
+/* =========================================================================
+   4. SIMILAR PRODUCTS SECTION
+   ========================================================================= */
+
+.pdp-similar-section {
+  margin-top: 60px;
+}
+
+.pdp-similar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.pdp-similar-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0e3d7d;
+  margin: 0;
+}
+
+.pdp-view-all-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #0e3d7d;
+  padding: 8px 22px;
+  border-radius: 9999px;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  letter-spacing: 0.2px;
+}
+
+.pdp-view-all-btn:hover {
+  background: #0e3d7d;
+  color: #ffffff;
+  border-color: #0e3d7d;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(14, 61, 125, 0.22);
+}
+
+.pdp-view-all-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(14, 61, 125, 0.15);
+}
+
+.pdp-similar-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.pdp-similar-card {
+  background-color: #ffffff;
+  border: 1px solid #eaecf0;
+  border-radius: 16px;
+  padding: 20px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pdp-similar-card:hover {
+  transform: translateY(-4px);
+  border-color: #b2ccec;
+  box-shadow: 0 10px 24px -4px rgba(14, 61, 125, 0.08);
+}
+
+.pdp-sim-img-box {
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.pdp-sim-img {
+  max-height: 140px;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.pdp-sim-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0e3d7d;
+  margin: 0 0 6px 0;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pdp-sim-desc {
+  font-size: 12px;
+  color: #667085;
+  line-height: 1.5;
+  margin: 0 0 14px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 36px;
+}
+
+.pdp-sim-btn {
+  width: 100%;
+  height: 38px;
+  background-color: #114285;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.pdp-sim-btn:hover {
+  background-color: #0b2f60;
+}
+
+/* =========================================================================
+   5. RESPONSIVE
+   ========================================================================= */
+
+@media (max-width: 1024px) {
+  .pdp-hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pdp-gallery-col {
+    justify-content: center;
+  }
+
+  .pdp-tabs-section {
+    grid-template-columns: 1fr;
+  }
+
+  .pdp-similar-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .pdp-gallery-col {
+    flex-direction: column-reverse;
+  }
+
+  .pdp-thumbnails-list {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .pdp-trust-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .pdp-features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pdp-similar-grid {
+    grid-template-columns: 1fr;
+  }
+}
